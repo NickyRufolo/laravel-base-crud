@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
-class MovieController extends Controller
+class MoviesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,10 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::All();
-        return view('comics', compact('movies'));
+
+        // dd($movies);
+
+        return view('pages.movie.index', compact('movies'));
     }
 
     /**
@@ -47,7 +50,11 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        //
+        $prodotto_singolo = Movie::findOrFail($id);
+
+        // dd($movies);
+
+        return view('pages.movie.show', compact('prodotto_singolo'));
     }
 
     /**
